@@ -64,28 +64,26 @@ https://github.com/digitalwitchdemo/Configuration_management.git
 
 ## Tasks
 
-* Create a **VPC**
-* Create **4 Subnets**
-
-  * Public Subnet A
-  * Public Subnet B
-  * Private Subnet A
-  * Private Subnet B
-* Create an **Internet Gateway**
-* Create a **NAT Gateway**
-* Configure Route Tables
-
-  * Use the **Main Route Table** for Public Subnets.
-  * Create a separate **Private Route Table**.
-* Associate:
-
-  * Public Subnets → Main Route Table
-  * Private Subnets → Private Route Table
-* Create the following Security Groups:
-
-  * `public-sg`
-  * `private-sg`
-  * `loadbalancer-sg`
+- Fork Project Repo
+- Clone Project Repo
+- Create a **VPC**
+- Create **4 Subnets**
+  - Public Subnet A
+  - Public Subnet B
+  - Private Subnet A
+  - Private Subnet B
+- Create an **Internet Gateway**
+- Create a **NAT Gateway**
+- Configure Route Tables
+  - Use the **Main Route Table** for Public Subnets.
+  - Create a separate **Private Route Table**.
+- Associate:
+  - Public Subnets → Main Route Table
+  - Private Subnets → Private Route Table
+- Create the following Security Groups:
+  - `public-sg`
+  - `private-sg`
+  - `loadbalancer-sg`
 
 ---
 
@@ -93,14 +91,13 @@ https://github.com/digitalwitchdemo/Configuration_management.git
 
 ## Tasks
 
-* Create an Amazon Elastic File System (EFS).
-* Create Mount Targets.
-* Attach the EFS to the required Availability Zones.
-* Allow NFS traffic (TCP Port **2049**) between:
-
-  * `private-sg`
-  * `public-sg`
-* Create an **EFS Access Point**.
+- Create an Amazon Elastic File System (EFS).
+- Create Mount Targets.
+- Attach the EFS to the required Availability Zones.
+- Allow NFS traffic (TCP Port **2049**) between:
+  - `private-sg`
+  - `public-sg`
+- Create an **EFS Access Point**.
 
 ---
 
@@ -115,8 +112,8 @@ https://github.com/digitalwitchdemo/Configuration_management.git
 Infrastructure → Linux
 ```
 
-3. Copy the Linux Agent installation command.
-4. Save it for later use in the EC2 User Data script.
+1. Copy the Linux Agent installation command.
+2. Save it for later use in the EC2 User Data script.
 
 ---
 
@@ -124,17 +121,17 @@ Infrastructure → Linux
 
 ## Tasks
 
-* Launch a **t2.small** EC2 instance.
-* Deploy it in a **Public Subnet**.
-* Create an SSH Key Pair.
-* Download the User Data script from:
+- Launch a **t2.small** EC2 instance.
+- Deploy it in a **Public Subnet**.
+- Create an SSH Key Pair.
+- Download the User Data script from:
 
 ```
 https://github.com/digitalwitchdemo/Configuration_management.git
 ```
 
-* Replace the Datadog variables with your own values.
-* Paste the script into the EC2 **User Data** section.
+- Replace the Datadog variables with your own values.
+- Paste the script into the EC2 **User Data** section.
 
 ---
 
@@ -142,10 +139,10 @@ https://github.com/digitalwitchdemo/Configuration_management.git
 
 ## Tasks
 
-* Create a Slack Workspace.
-* Create a Notification Channel.
-* Integrate Datadog with Slack.
-* Invite the Datadog App into the channel.
+- Create a Slack Workspace.
+- Create a Notification Channel.
+- Integrate Datadog with Slack.
+- Invite the Datadog App into the channel.
 
 ---
 
@@ -153,12 +150,12 @@ https://github.com/digitalwitchdemo/Configuration_management.git
 
 ## Tasks
 
-* Create a Notification Rule.
-* Select the Slack Channel.
-* Create a CPU Utilization Monitor.
-* Attach the Notification Rule.
-* Trigger a CPU spike.
-* Verify Slack receives the alert.
+- Create a Notification Rule.
+- Select the Slack Channel.
+- Create a CPU Utilization Monitor.
+- Attach the Notification Rule.
+- Trigger a CPU spike.
+- Verify Slack receives the alert.
 
 ---
 
@@ -166,32 +163,30 @@ https://github.com/digitalwitchdemo/Configuration_management.git
 
 ## 7.1 Create a Launch Template
 
-* Instance Type: **t2.small**
-* Use the provided User Data script.
-* Configure:
-
-  * IAM Role
-  * Security Group
-  * Key Pair
+- Instance Type: **t2.small**
+- Use the provided User Data script.
+- Configure:
+  - IAM Role
+  - Security Group
+  - Key Pair
 
 ---
 
 ## 7.2 Create an Auto Scaling Group
 
-* Use the Launch Template.
-* Deploy into the Private Subnets.
-* Configure:
-
-  * Minimum Capacity
-  * Desired Capacity
-  * Maximum Capacity
+- Use the Launch Template.
+- Deploy into the Private Subnets.
+- Configure:
+  - Minimum Capacity
+  - Desired Capacity
+  - Maximum Capacity
 
 ---
 
 ## 7.3 Create a Target Group
 
-* Target Type: **Instance**
-* Configure Health Checks.
+- Target Type: **Instance**
+- Configure Health Checks.
 
 ---
 
@@ -201,9 +196,9 @@ Deploy into the Public Subnets.
 
 Configure:
 
-* Security Group
-* HTTP Listener (Port 80)
-* Target Group
+- Security Group
+- HTTP Listener (Port 80)
+- Target Group
 
 Test:
 
@@ -217,11 +212,11 @@ http://<load-balancer-dns-name>
 
 ## Tasks
 
-* Create a Public Hosted Zone.
-* Copy the four AWS Name Servers.
-* Login to Namecheap.
-* Replace the Namecheap Name Servers with the AWS Name Servers.
-* Create an Alias Record pointing to the Load Balancer.
+- Create a Public Hosted Zone.
+- Copy the four AWS Name Servers.
+- Login to Namecheap.
+- Replace the Namecheap Name Servers with the AWS Name Servers.
+- Create an Alias Record pointing to the Load Balancer.
 
 Verify DNS resolution.
 
@@ -237,10 +232,10 @@ Open:
 AWS Certificate Manager (ACM)
 ```
 
-* Request a Public Certificate.
-* Select your Domain.
-* Create the required CNAME validation record.
-* Wait until the certificate status changes to **Issued**.
+- Request a Public Certificate.
+- Select your Domain.
+- Create the required CNAME validation record.
+- Wait until the certificate status changes to **Issued**.
 
 ---
 
@@ -250,9 +245,9 @@ Go to the Load Balancer.
 
 Create:
 
-* HTTPS Listener (443)
-* Attach the ACM Certificate.
-* Route traffic to the Target Group.
+- HTTPS Listener (443)
+- Attach the ACM Certificate.
+- Route traffic to the Target Group.
 
 Test:
 
@@ -262,8 +257,8 @@ https://your-domain.com
 
 Once confirmed, either:
 
-* Delete the HTTP Listener, or
-* Configure HTTP → HTTPS Redirection.
+- Delete the HTTP Listener, or
+- Configure HTTP → HTTPS Redirection.
 
 ---
 
@@ -271,15 +266,16 @@ Once confirmed, either:
 
 ## Tasks
 
-* Document every deployment step.
-* Capture screenshots.
-* Ensure every team member understands the deployment.
-* Prepare for project defence.
-* Be ready to explain every stage of the deployment.
+- Document every deployment step.
+- Capture screenshots.
+- Ensure every team member understands the deployment.
+- Prepare for project defence.
+- Be ready to explain every stage of the deployment.
 
 ---
 
 # Project Deliverables
+
 
 | Component                 | Status |
 | ------------------------- | ------ |
@@ -302,45 +298,46 @@ Once confirmed, either:
 | HTTPS Listener            | ✅      |
 | Final Documentation       | ✅      |
 
+
 ---
 
 # Technologies Used
 
-* Amazon VPC
-* Amazon EC2
-* Amazon EFS
-* Amazon Route 53
-* AWS Certificate Manager (ACM)
-* Application Load Balancer (ALB)
-* Auto Scaling Group (ASG)
-* IAM
-* Security Groups
-* Datadog
-* Slack
-* Namecheap DNS
+- Amazon VPC
+- Amazon EC2
+- Amazon EFS
+- Amazon Route 53
+- AWS Certificate Manager (ACM)
+- Application Load Balancer (ALB)
+- Auto Scaling Group (ASG)
+- IAM
+- Security Groups
+- Datadog
+- Slack
+- Namecheap DNS
 
 ---
 
 # Validation Checklist
 
-* [ ] VPC Created
-* [ ] Public Subnets Created
-* [ ] Private Subnets Created
-* [ ] NAT Gateway Created
-* [ ] Internet Gateway Attached
-* [ ] Security Groups Configured
-* [ ] EFS Mounted Successfully
-* [ ] Jump Server Running
-* [ ] Datadog Agent Installed
-* [ ] Slack Notifications Working
-* [ ] Launch Template Created
-* [ ] Auto Scaling Group Created
-* [ ] Target Group Healthy
-* [ ] Load Balancer Working
-* [ ] Domain Resolving
-* [ ] SSL Certificate Issued
-* [ ] HTTPS Working
-* [ ] Documentation Completed
+- VPC Created
+- Public Subnets Created
+- Private Subnets Created
+- NAT Gateway Created
+- Internet Gateway Attached
+- Security Groups Configured
+- EFS Mounted Successfully
+- Jump Server Running
+- Datadog Agent Installed
+- Slack Notifications Working
+- Launch Template Created
+- Auto Scaling Group Created
+- Target Group Healthy
+- Load Balancer Working
+- Domain Resolving
+- SSL Certificate Issued
+- HTTPS Working
+- Documentation Completed
 
 ---
 
