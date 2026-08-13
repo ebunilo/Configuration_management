@@ -14,6 +14,10 @@ sudo apt upgrade -y
 #================================
 mkdir -p /home/ubuntu/webserver
 
+# Change webserver folder owner to ubuntu
+sudo chown ubuntu:ubuntu /home/ubuntu/webserver
+
+
 # installing EFS client dependencies
 #====================================
 sudo apt -y install nfs-common stunnel4 git binutils
